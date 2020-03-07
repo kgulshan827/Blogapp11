@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<img src="/static/hero-image.jpg" alt="Paris" style="width:1500px">
+<div class="card">
+
+    <p>
+       <h2> This is blog related to open source and other technologies
+    developed with the help of django framework</h2>
+    </p>
+</div>
+
+<div class="articles">
+
+     {% for article in articles %}
+     <div class="article">
+         <h2><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
+         <p>{{article.snippet}}
+
+         </p>
+         <p>{{article.date}}
+         </p>
+     </div>
+
+     {% endfor %}
+</div>
+
+</hr>
+
+<footer>
+    <h2>Contact us</h2>
+
+
+ Ph:+91 9674722157<br>
+    Email:kgulshan827@gmail.com
+
+
+</footer>
+</body>
+</html>
+{% endblock %}

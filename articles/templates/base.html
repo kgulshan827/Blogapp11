@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WELCOME</title>
+    <link rel="stylesheet" href= "/static/styles.css"  >
+</head>
+<body>
+
+<header class="wrapper">
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                <li>
+                    <form class="logout" action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                     <button type="submit">logout</button>
+                    </form>
+                </li>
+            <li><a href="{% url 'create' %}">New article</a></li>
+
+                {% else %}
+                <li><a href="{% url 'login' %}" >Login</a></li>
+                <li><a href="{% url 'signup' %}" >Signup </a></li>
+                {% endif %}
+
+
+            </ul>
+        </nav>
+    </header>
+<div class="wrapper">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
