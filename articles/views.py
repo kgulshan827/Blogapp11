@@ -51,7 +51,7 @@ def create(request):
             instance=form.save(commit=False)
             instance.author=request.user
 
-            form.save()
+            instance.save()
             return redirect('list')
 
     else:
