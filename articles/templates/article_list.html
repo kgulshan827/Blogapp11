@@ -16,12 +16,14 @@
      {% for article in articles %}
      <div class="article">
          <h2><a href="{% url 'detail' slug=article.slug %}">{{article.title}}</a></h2>
+         
          <p>{{article.snippet}}
 
          </p>
          <p>{{article.date}}
          </p>
          <p class="author" >added by {{ article.author.username }}</p>
+         <p class="more"><a href ="{% url 'detail' slug=article.slug  %}">Read more</a></p>
      </div>
 
      {% endfor %}
