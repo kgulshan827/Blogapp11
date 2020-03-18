@@ -27,10 +27,9 @@ urlpatterns =  [
     path('create',article_view.create),
     path('articles/', include('articles.urls')),
     path('accounts/', include('accounts.urls')),
-
-
-
-
+    path('account/', include('allauth.urls'))
+    
+    
 ]
 urlpatterns+=staticfiles_urlpatterns()
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

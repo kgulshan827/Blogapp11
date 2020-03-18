@@ -25,7 +25,7 @@ SECRET_KEY = 'jm7wl+gg)!$msss=nf2ct@_a+ks$k_h_7ds(c+4jm608t@=oyw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'articles',
     'accounts',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google'
 
 ]
 
@@ -126,3 +132,6 @@ STATICFILES_DIRS=[
 ]
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = "/"

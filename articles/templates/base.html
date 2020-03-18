@@ -10,6 +10,7 @@
 <header class="wrapper">
         <nav>
             <ul>
+                <li><a href="{% url 'list' %}">Home</a></li>
                 {% if user.is_authenticated %}
                 <li>
                     <form class="logout" action="{% url 'logout' %}" method="post">
@@ -18,7 +19,7 @@
                     </form>
                 </li>
             <li><a href="{% url 'create' %}">New article</a></li>
-            <li><a href="{% url 'list' %}">Home</a></li>
+            
 
                 {% else %}
                 <li><a href="{% url 'login' %}" >Login</a></li>
