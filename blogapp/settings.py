@@ -40,13 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'articles',
     'accounts',
+    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google'
-
+    'allauth.socialaccount.providers.google',
+    
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +138,4 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

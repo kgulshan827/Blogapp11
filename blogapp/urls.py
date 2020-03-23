@@ -27,8 +27,8 @@ urlpatterns =  [
     path('create',article_view.create),
     path('articles/', include('articles.urls')),
     path('accounts/', include('accounts.urls')),
-    path('account/', include('allauth.urls'))
-    
+    path('account/', include('allauth.urls')),
+    path('likes/',article_view.like_post,name="like_post")    
     
 ]
 urlpatterns+=staticfiles_urlpatterns()

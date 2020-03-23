@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
+<style>
+img{
+  height: 400px;
+  width: 70%;
+  margin-left: 100px;
+  
+}
+.article-detail .article h2{
+  text-align:center;
+  margin-left:10px;
+  margin-top:50px;
+  font-size:3em;
+  
+  }
+</style>
 <div class="article-detail">
     <div class="article">
         <img src="{{article.thumb.url}}">
@@ -7,10 +23,14 @@
         <p>
             {{article.body}}
         </p>
-        <p class="date">
-            {{article.date}}
-        </p>
+      
     </div>
+    <form action="{% url 'like_post' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" name="article_id" value="{{ article.id }}" class="btn btn-primary"> Likes</button>
+      
+    </form>
+    Comments:
      {% for comment in comments %}
         <div class="comments" style="padding: 10px;">
           <p class="font-weight-bold">
@@ -22,22 +42,19 @@
           {{ comment.body | linebreaks }}
         </div>
         {% endfor %}
-    <div class="col-md-8 card mb-4  mt-3 ">
-      <div class="card-body">
-        {% if new_comment %}
-        <div class="alert alert-success" role="alert">
-          Your comment is awaiting moderation
+        <div class="col-md-8 card mb-4  mt-3 ">
+          <div class="card-body">
+            
+            <h3>Leave a comment</h3>
+            <form method="post" style="margin-top: 1.3em;">
+              {{ comment_form | crispy }}
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+     </form>
+            
+          </div>
+        
         </div>
-        {% else %}
-        <h3>Leave a comment</h3>
-        <form method="post" style="margin-top: 1.3em;">
-          {{ comment_form.as_p }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-        </form>
-        {% endif %}
-      </div>
-    </div>
   </div>
 
 

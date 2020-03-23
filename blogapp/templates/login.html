@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load socialaccount %}
+{% providers_media_js %} 
 
-
+<h1>login </h1>
 <style>
     .button {
       background-color: #4CAF50; /* Green */
@@ -22,12 +23,17 @@
     .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
     .button5 {background-color: #555555;} /* Black */
     </style>
-<form class="site-form" action="{% url 'signup' %}" method="post">
+<form class="site-form" action="{% url 'login' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="signup">
+    {% if request.GET.next %}
+    <input type="hidden" value="{{request.GET.next}}" name="next">
+    {% endif %}
+    <input type="submit" value="login">
 </form>
 
 
 <button class="button button3"><a href="{% provider_login_url "google" %}">Google Login</a></button>
+ 
+ 
 {% endblock %}
