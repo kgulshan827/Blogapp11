@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 from .import forms
 
+from django.db.models import Count    
 
 def home (request):
     return render(request,'home.html')
@@ -17,11 +18,16 @@ def article_list(request):
 @login_required(login_url="/accounts/login")
 def article_detail(request,slug):
 
-    articles=Articles.objects.get(slug=slug)
+    articles=get_object_or_404(Articles,slug=slug)
 
 
     comments = articles.comments.filter(active=True)
     new_comment = None
+    is_liked=False
+    if articles.likes.filter(id=request.user.id).exists():
+        
+        is_liked=True
+    
 
     if request.method == 'POST':
         comment_form = forms.CommentForm(data=request.POST)
@@ -44,12 +50,29 @@ def article_detail(request,slug):
     return render(request,'article_detail.html',{'article':articles,
                                                  'comments': comments,
                                                  'new_comment': new_comment,
-                                                 'comment_form': comment_form})
+                                                 'comment_form': comment_form,
+                                                 'is_liked':is_liked,
+                                                 'total_likes':articles.total_likes() })
 @login_required(login_url="/accounts/login")
 def like_post(request):
-     article = Articles.objects.get(id=request.POST.get('article_id'))
-     article.likes.add(request.user)
-     return redirect('list')
+    article = Articles.objects.get(id=request.POST.get('article_id'))
+     
+    is_liked=False
+    if article.likes.filter(id=request.user.id).exists():
+        article.likes.remove(request.user)
+        is_liked=False
+    
+    else:
+
+        article.likes.add(request.user)
+        is_liked=True
+
+    return redirect('detail',article.slug)
+def author(request):
+    user_posts = Articles.objects.annotate(total_posts = Count('author'))
+    
+    return render(request,'author.html',{' user_posts': user_posts,
+                                               })
 def create(request):
 
     if request.method == 'POST':

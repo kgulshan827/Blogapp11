@@ -9,5 +9,9 @@ urlpatterns = [
 
     path('<slug:slug>/',views.article_detail,name="detail"),
     path('create',views.create,name="create"),
+    
+    
+    
+
 
 ]

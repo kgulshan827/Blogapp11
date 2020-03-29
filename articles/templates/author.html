@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {{ total_posts }}
+            {% for user in user_posts %}
+
+<p>{{user.first_name}} has written {% user.total_posts %} posts so far <p>
+
+{% endfor %}
+</p></p></div>
+</div>
+</div>
+{% endblock %}
+

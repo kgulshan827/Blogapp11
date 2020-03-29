@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 # Create your models here.
 class Articles(models.Model):
+    objects=models.Manager()
     title=models.CharField(max_length=100)
     slug=models.SlugField()
     body=models.TextField()
@@ -12,15 +13,17 @@ class Articles(models.Model):
     author=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
 
 
+
     def __str__(self):
         return self.title
     def snippet(self):
         return self.body[0:50]+"....."
-    def get_absolute_url(self):
-            return reverse('like_post', kwargs = {
-                'slug': self.slug
-            })
-
+    
+    
+    def total_likes(self):
+        return self.likes.count()
+    def Count(self):
+        return self.post.count()
 
 
 
