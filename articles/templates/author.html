@@ -1,21 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-
-
-
-
 <div class="container">
     <div class="row">
-        <!-- Blog Entries Column -->
         <div class="col-md-8 mt-3 left">
-            {{ total_posts }}
-            {% for user in user_posts %}
+        <h1>Total Contribution made by You <h2>{{ article }}</h2></h1>
+        
+                <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for article in articles %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ article.title }}</h2>
+                    <p class="card-text text-muted h6">{{ article.author }} | {{ article.date}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'detail' article.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+        </div>
 
-<p>{{user.first_name}} has written {% user.total_posts %} posts so far <p>
 
-{% endfor %}
-</p></p></div>
-</div>
-</div>
+
+
 {% endblock %}
 

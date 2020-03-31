@@ -69,10 +69,14 @@ def like_post(request):
 
     return redirect('detail',article.slug)
 def author(request):
-    user_posts = Articles.objects.annotate(total_posts = Count('author'))
+
     
-    return render(request,'author.html',{' user_posts': user_posts,
-                                               })
+    article=(Articles.objects.filter(author=request.user)).count()
+    articles=Articles.objects.filter(author=request.user)
+    
+    
+    return render(request,'author.html',{'article':article,
+    'articles':articles})
 def create(request):
 
     if request.method == 'POST':
