@@ -8,19 +8,27 @@ img{
   margin-left: 100px;
   
 }
-.article-detail .article h2{
+.center .article h2{
   text-align:center;
   margin-left:10px;
   margin-top:50px;
   font-size:3em;
+}
   
-  }
+.center1{
+  padding: 70px 0;
+  border: 3px solid green;
+}
+.center2{
+  padding: 70px 0;
+  border: 3px solid blue;
+}
 </style>
-<div class="article-detail">
+<div class="center">
     <div class="article">
         <img src="{{article.thumb.url}}">
         <h2>{{article.title}}</h2>
-        <p>
+        <p class="center1">
             {{article.body}}
         </p>
       
@@ -36,6 +44,7 @@ img{
     </form>
     Comments:
      {% for comment in comments %}
+     <div class="center2">
         <div class="comments" style="padding: 10px;">
           <p class="font-weight-bold">
             {{ comment.name }}
@@ -59,6 +68,7 @@ img{
           </div>
         
         </div>
+  </div>
   </div>
 
 

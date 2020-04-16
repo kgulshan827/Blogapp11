@@ -2,6 +2,7 @@
 {% block content %}
 {% load socialaccount %}
 {% providers_media_js %} 
+{% load crispy_forms_tags %}
 
 <h1>login </h1>
 <style>
@@ -25,7 +26,7 @@
     </style>
 <form class="site-form" action="{% url 'login' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form | crispy }}
     {% if request.GET.next %}
     <input type="hidden" value="{{request.GET.next}}" name="next">
     {% endif %}

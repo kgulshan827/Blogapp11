@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load socialaccount %}
-
+{% load crispy_forms_tags %}
 
 <style>
     .button {
@@ -24,8 +24,8 @@
     </style>
 <form class="site-form" action="{% url 'signup' %}" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="signup">
+    {{ form | crispy }}
+    <input type="submit" value="Signup">
 </form>
 
 

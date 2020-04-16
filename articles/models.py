@@ -9,7 +9,7 @@ class Articles(models.Model):
     body=models.TextField()
     date=models.DateTimeField(auto_now_add=True)
     likes=models.ManyToManyField(User,related_name='likes',blank=True)
-    thumb=models.ImageField(default='default.png',blank=True)
+    thumb=models.ImageField(default='default.png' ,blank=True)
     author=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
 
 
