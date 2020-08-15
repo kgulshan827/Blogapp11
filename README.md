@@ -61,7 +61,7 @@
 
 ## For contributors
 
-ReviewBook uses the following technologies:
+Blogapp uses the following technologies:
 
 + HTML/CSS
 + Pyhton(Django)
