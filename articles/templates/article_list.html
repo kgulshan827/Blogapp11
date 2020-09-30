@@ -37,7 +37,7 @@
             {% for article in articles %}
             <div class="card mb-4">
                 <div class="card-body">
-                    <h2 class="card-title">{{ article.title }}</h2>
+                    <h2 class="card-title">{{ article.title | capfirst }}</h2>
                     <p class="card-text text-muted h6">{{ article.author }} | {{ article.date}} </p>
                     <p class="card-text">{{post.content|slice:":200" }}</p>
                     <a href="{% url 'detail' article.slug  %}" class="btn btn-primary">Read More &rarr;</a>

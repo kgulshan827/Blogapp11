@@ -4,8 +4,9 @@
 <style>
 img{
   height: 400px;
-  width: 70%;
-  margin-left: 100px;
+  width: 50%;
+  margin-left: 200px;
+  align-self: center;
   
 }
 .center .article h2{
@@ -26,8 +27,8 @@ img{
 </style>
 <div class="center">
     <div class="article">
-        <img src="{{article.thumb.url}}">
-        <h2>{{article.title}}</h2>
+        <img src="{{article.thumb.url}}" height="500">
+        <h2>{{article.title | capfirst}}</h2>
         <p class="center1">
             {{article.body}}
         </p>

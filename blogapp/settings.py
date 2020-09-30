@@ -25,7 +25,7 @@ SECRET_KEY = 'jm7wl+gg)!$msss=nf2ct@_a+ks$k_h_7ds(c+4jm608t@=oyw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
